@@ -18,21 +18,29 @@ const Chatbot = () => {
 
   const handleTextSubmit = () => {
     const node = decisionTree[currentNode];
-    const input = userInput.trim();
+    const input = userInput.trim().toLowerCase();
 
     if (!input) return;
 
     setIsTyping(true);
     
   setTimeout(() =>{
-    if(node.options && node.options[input]) {
-      setHistory([...history, { question: node.message, answer: input}]);
-      setCurrentNode(node.options[input]);
+    if(node.options) {
+      const validOptions = Object.keys(node.options).map(opt => opt.toLowerCase());
+      if (validOptions.includes(input)) {
+        const matchedKey = Object.keys(node.options).find(opt => opt.toLowerCase() === input);
+        setHistory(history =>[...history, { question: node.message, answer: input}]);
+        setCurrentNode(node.options[matchedKey]);
+      } else {
+        setHistory(history => [...history, { question: node.message, answer: input }, 
+          { question: "⚠️ Invalid input. Please answer with: " + validOptions.join(" / ") }]);
+      }
+      
     } else if (node.next) {
-      setHistory([...history, { question: node.message, answer: input}]);
+      setHistory(history => [...history, { question: node.message, answer: input}]);
       setCurrentNode(node.next);
     } else {
-      setHistory([...history, { question: node.message, answer: input}]);
+      setHistory(history => [...history, { question: node.message, answer: input}]);
       setCurrentNode(null);
     }
 
