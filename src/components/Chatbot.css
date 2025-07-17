@@ -1,0 +1,31 @@
+.dot-flashing{
+    position: relative;
+    margin-left: 5px;
+    width: 50px;
+    display: inline-block;
+    text-align: left;
+}
+.dot-flashing::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #888;
+    animation: dotFlashing 1s infinite;
+    margin-right: 3px;
+}
+.dot-flashing::after {
+    content: '...';
+    animation: blink 1s infinite steps(1, end);
+}
+@keyframes blink {
+    0%, 20% { opacity: 0;}
+    50% { opacity: 1;}
+    100% { opacity: 0;}
+}
+@keyframes dot-flashing {
+    0% { box-shadow: 0 0 0 #888;}
+    50% { box-shadow: 8px 0 0 #888, 16px 0 0 transparent;}
+    100% { box-shadow: 0 0 0 #888;}
+}

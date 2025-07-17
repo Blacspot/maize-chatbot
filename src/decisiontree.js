@@ -14,7 +14,7 @@ const decisionTree = {
     message: "What month is it now? (March, April, other)",
     options: {
       March: "plant_now",
-      April: "plant_now", // ✅ fixed typo here
+      April: "plant_now", // 
       other: "wait_for_rains"
     }
   },
