@@ -4,6 +4,7 @@ import '../components/Chatbot.css';
 import { FaRobot } from 'react-icons/fa';
 import { GiFarmer } from 'react-icons/gi';
 
+
 const intents = [
   {
     name: 'greeting',
@@ -115,7 +116,10 @@ const JsonBot = () => {
 
 
   const Typingloader = () => (
-    <div style={{ display: 'flex', alignItems: 'center', padding: '10px' }}>
+    <div style={{
+      display: 'flex',
+       alignItems: 'center', 
+       padding: '10px' }}>
       <FaRobot style={{ marginRight: '10px' }} />
       <span className="dot-flashing">Typing...</span>
     </div>
@@ -123,15 +127,46 @@ const JsonBot = () => {
 
 
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
-      <h2>🌽 Maize Q&A Bot</h2>
+    <div style={{ 
+       display: 'flex',
+       flexDirection: 'column',
+       height: '90vh',
+       padding: '20px',
+       maxWidth: '600px', 
+       margin: '0 auto',
+       border: '1px solid #ccc',
+       borderRadius: '10px',
+       overflow: 'hidden',
+        }}
+        >
+      <h2 style={{padding:'10px'}}>🌽 Maize Q&A Bot</h2>
+      <div style={{
+        flex: 1,
+        overflowY: 'auto',
+        padding: '10px',
+        backgroundColor: '#f9f9f9',
+        borderRadius: '8px',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+      }}>
+
+      
 
       {history.map((msg, index) => (
         <div key={index} style={{ marginBottom: '10px' }}>
           {msg.sender === 'bot' ? (
             <div style={{ backgroundColor: '#e0f7fa', padding: '10px', borderRadius: '8px' }}>
               <FaRobot style={{ marginRight: '10px' }} size={20} color="#333" />
-              <strong>Bot:</strong> <pre>{msg.text}</pre>
+              <strong>Bot:</strong>
+              <p style={{ 
+                whiteSpace: 'pre-wrap',
+                 wordWrap:'break-word',
+                  margin: 0 , 
+                  fontSize:'italic', 
+                  
+                  }}
+                  >
+                    {msg.text}
+                    </p>
             </div>
           ) : (
             <div style={{ backgroundColor: '#c8e6c9', padding: '10px', borderRadius: '8px', textAlign: 'right' }}>
@@ -144,7 +179,7 @@ const JsonBot = () => {
 
       {isTyping && <Typingloader />}
           
-
+      </div>
 
           <input
             type="text"
@@ -152,7 +187,7 @@ const JsonBot = () => {
             onChange={(e) => setUserInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleTextSubmit()}
             placeholder="Type your answer..."
-            style={{ width: '80%', padding: '10px', marginRight: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
+            style={{ width: '95%', padding: '10px', marginRight: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
           />
 
           <button
