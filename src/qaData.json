@@ -1,0 +1,26 @@
+{
+  "start": {
+    "question": "Welcome! What would you like to know about maize farming?",
+    "options": ["Planting", "Pest Control", "Harvesting"]
+  },
+  "Planting": {
+    "answer": "Plant maize during the rainy season using DAP fertilizer. Do you want more tips?",
+    "options": ["Yes", "No"]
+  },
+  "Pest Control": {
+    "answer": "Scout for Fall Armyworm weekly. Use recommended insecticides early morning or evening.",
+    "options": []
+  },
+  "Harvesting": {
+    "answer": "Harvest when maize leaves turn yellow and cobs are dry.",
+    "options": []
+  },
+  "Yes": {
+    "answer": "Ensure proper spacing and weed management to increase yield.",
+    "options": []
+  },
+  "No": {
+    "answer": "Alright! Come back anytime.",
+    "options": []
+  }
+}
